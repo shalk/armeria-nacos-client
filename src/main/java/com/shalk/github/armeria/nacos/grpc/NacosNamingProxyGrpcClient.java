@@ -15,6 +15,6 @@
  */
 package com.shalk.github.armeria.nacos.grpc;
 
-import com.shalk.github.armeria.nacos.NacosNamingClient;
+import com.shalk.github.armeria.nacos.NacosNamingProxyClient;
 
-public interface NacosNamingProxyGrpcClient extends NacosNamingClient {}
+public interface NacosNamingProxyGrpcClient extends NacosNamingProxyClient {}

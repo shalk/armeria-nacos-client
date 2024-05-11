@@ -15,4 +15,34 @@
  */
 package com.shalk.github.armeria.nacos;
 
-public interface NacosNamingProxyClient {}
+import com.shalk.github.armeria.nacos.model.ModelInstance;
+import com.shalk.github.armeria.nacos.param.SubscribeParam;
+import java.io.Closeable;
+import java.util.List;
+
+public interface NacosNamingProxyClient extends Closeable {
+
+  boolean registerInstance(String service, String groupName, ModelInstance instance);
+
+  boolean deregisterInstance(String service, String groupName, ModelInstance instance);
+
+  // SelectAllInstances return all instances,include healthy=false,enable=false,weight<=0
+  // ServiceName require
+  // Clusters optional,default:DEFAULT
+  // GroupName optional,default:DEFAULT_GROUP
+  List<ModelInstance> selectAllInstances(String service, String groupName, String clusters);
+
+  // Subscribe use to subscribe service change event
+  // ServiceName require
+  // Clusters optional,default:DEFAULT
+  // GroupName optional,default:DEFAULT_GROUP
+  // SubscribeCallback require
+  void subscribe(SubscribeParam param);
+
+  // Unsubscribe use to unsubscribe service change event
+  // ServiceName require
+  // Clusters optional,default:DEFAULT
+  // GroupName optional,default:DEFAULT_GROUP
+  // SubscribeCallback require
+  void unsubscribe(SubscribeParam param);
+}

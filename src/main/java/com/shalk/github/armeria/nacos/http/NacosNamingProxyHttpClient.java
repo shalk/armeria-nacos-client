@@ -15,6 +15,6 @@
  */
 package com.shalk.github.armeria.nacos.http;
 
-import com.shalk.github.armeria.nacos.NacosNamingClient;
+import com.shalk.github.armeria.nacos.NacosNamingProxyClient;
 
-public interface NacosNamingProxyHttpClient extends NacosNamingClient {}
+public interface NacosNamingProxyHttpClient extends NacosNamingProxyClient {}

@@ -15,13 +15,35 @@
  */
 package com.shalk.github.armeria.nacos;
 
-import com.shalk.github.armeria.nacos.cache.NacosNamingCache;
-import com.shalk.github.armeria.nacos.grpc.NacosNamingProxyGrpcClient;
-import com.shalk.github.armeria.nacos.http.NacosNamingProxyHttpClient;
+import com.shalk.github.armeria.nacos.model.ModelInstance;
+import com.shalk.github.armeria.nacos.param.SubscribeParam;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 public class NacosNamingProxyClientImpl implements NacosNamingProxyClient {
 
-  NacosNamingProxyGrpcClient grpcClient;
-  NacosNamingProxyHttpClient httpClient;
-  NacosNamingCache cache;
+  @Override
+  public boolean registerInstance(String service, String groupName, ModelInstance instance) {
+    return false;
+  }
+
+  @Override
+  public boolean deregisterInstance(String service, String groupName, ModelInstance instance) {
+    return false;
+  }
+
+  @Override
+  public List<ModelInstance> selectAllInstances(String service, String groupName, String clusters) {
+    return Collections.emptyList();
+  }
+
+  @Override
+  public void subscribe(SubscribeParam param) {}
+
+  @Override
+  public void unsubscribe(SubscribeParam param) {}
+
+  @Override
+  public void close() throws IOException {}
 }

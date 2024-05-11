@@ -15,6 +15,9 @@
  */
 package com.shalk.github.armeria.nacos;
 
+import com.shalk.github.armeria.nacos.cache.NacosNamingCache;
+import com.shalk.github.armeria.nacos.grpc.NacosNamingProxyGrpcClient;
+import com.shalk.github.armeria.nacos.http.NacosNamingProxyHttpClient;
 import com.shalk.github.armeria.nacos.model.ModelInstance;
 import com.shalk.github.armeria.nacos.param.DeregisterInstanceParam;
 import com.shalk.github.armeria.nacos.param.RegisterInstanceParam;
@@ -24,6 +27,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class NacosNamingClientImpl implements NacosNamingClient {
+  NacosNamingProxyGrpcClient grpcClient;
+  NacosNamingProxyHttpClient httpClient;
+  NacosNamingCache cache;
 
   @Override
   public boolean registerInstance(RegisterInstanceParam param) {
