@@ -25,6 +25,7 @@ public class NacosNamingProxyClientImpl implements NacosNamingProxyClient {
 
   @Override
   public boolean registerInstance(String service, String groupName, ModelInstance instance) {
+
     return false;
   }
 

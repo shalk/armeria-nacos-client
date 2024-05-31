@@ -2,19 +2,23 @@ armeria-nacos-client
 ===
 
 implement grpc interface
-- [ ] registerInstance
-- [ ] deregisterInstance
-- [ ] selectAllInstances
-- [ ] subscribe
-- [ ] unsubscribe
-- [ ] integrate test
+- [ ] grpc registerInstance
+- [ ] grpc deregisterInstance
+- [ ] grpc selectAllInstances
+- [ ] grpc subscribe
+- [ ] grpc unsubscribe
+- [ ] grpc redo
+- [ ] grpc integrate test
+- [ ] grpc cache
+
 
 implement http interface
-- [ ] registerInstance
-- [ ] deregisterInstance
-- [ ] selectAllInstances
-- [ ] subscribe
-- [ ] unsubscribe
+- [ ] http registerInstance
+- [ ] http deregisterInstance
+- [ ] http selectAllInstances
+- [ ] http subscribe
+- [ ] http unsubscribe
+- [ ] http other feature
 - [ ] integrate test
 
 

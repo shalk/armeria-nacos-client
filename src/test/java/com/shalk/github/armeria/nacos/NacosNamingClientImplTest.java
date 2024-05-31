@@ -13,22 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.shalk.github.armeria.nacos.param;
+package com.shalk.github.armeria.nacos;
 
-import java.util.Map;
-import lombok.Data;
+import static org.junit.jupiter.api.Assertions.*;
 
-@Data
-public class RegisterInstanceParam {
-  String ip; // required
-  int port; // required
-  double weight = 1.0D; // required
-  String serviceName; // required
-  Map<String, String> metadata;
-  String clusterName;
-  String groupName = "DEFAULT_GROUP"; // default:DEFAULT_GROUP
+import com.shalk.github.armeria.nacos.param.RegisterInstanceParam;
+import org.junit.jupiter.api.Test;
 
-  //    boolean ephemeral; //
-  //    boolean enabled; //
-  //    boolean healthy; //
+class NacosNamingClientImplTest {
+
+  @Test
+  void registerInstance() {
+
+    NacosNamingClientImpl nacosNamingClient = new NacosNamingClientImpl("127.0.0.1", "namespace");
+    RegisterInstanceParam param = new RegisterInstanceParam();
+    param.setIp("1.1.1.1");
+    param.setPort(10086);
+    boolean result = nacosNamingClient.registerInstance(param);
+    assertTrue(result);
+  }
 }

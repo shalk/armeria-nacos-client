@@ -15,9 +15,7 @@
  */
 package com.shalk.github.armeria.nacos;
 
-import com.shalk.github.armeria.nacos.cache.NacosNamingCache;
 import com.shalk.github.armeria.nacos.grpc.NacosNamingProxyGrpcClient;
-import com.shalk.github.armeria.nacos.http.NacosNamingProxyHttpClient;
 import com.shalk.github.armeria.nacos.model.ModelInstance;
 import com.shalk.github.armeria.nacos.param.DeregisterInstanceParam;
 import com.shalk.github.armeria.nacos.param.RegisterInstanceParam;
@@ -28,12 +26,25 @@ import java.util.List;
 
 public class NacosNamingClientImpl implements NacosNamingClient {
   NacosNamingProxyGrpcClient grpcClient;
-  NacosNamingProxyHttpClient httpClient;
-  NacosNamingCache cache;
+
+  public NacosNamingClientImpl(String address, String namespace) {
+    grpcClient = new NacosNamingProxyGrpcClient(address, namespace);
+  }
+  //  NacosNamingProxyHttpClient httpClient;
+  //  NacosNamingCache cache;
 
   @Override
   public boolean registerInstance(RegisterInstanceParam param) {
-    return false;
+    String serviceName = param.getServiceName();
+    String groupName = param.getGroupName();
+    ModelInstance instance = new ModelInstance();
+    instance.setServiceName(param.getServiceName());
+    instance.setIp(param.getIp());
+    instance.setPort(param.getPort());
+    instance.setWeight(param.getWeight());
+    instance.setClusterName(param.getClusterName());
+    instance.setMetadata(param.getMetadata());
+    return grpcClient.registerInstance(serviceName, groupName, instance);
   }
 
   @Override

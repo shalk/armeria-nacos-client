@@ -15,4 +15,28 @@
  */
 package com.shalk.github.armeria.nacos.model;
 
-public class ModelInstance {}
+import java.util.HashMap;
+import java.util.Map;
+import lombok.Data;
+
+// @JsonInclude(JsonInclude.Include.NON_NULL)
+@Data
+public class ModelInstance {
+  private String ip;
+  private int port;
+  private double weight = 1.0D;
+
+  private boolean healthy = true;
+  private boolean enabled = true;
+  private boolean ephemeral = true;
+
+  private String clusterName;
+  private String serviceName;
+
+  private Map<String, String> metadata = new HashMap<>();
+
+  private String instanceId;
+  private int instanceHeartBeatInterval;
+  private int ipDeleteTimeout;
+  private int instanceHeartBeatTimeOut;
+}
